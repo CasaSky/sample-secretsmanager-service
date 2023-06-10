@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  localstack:
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: secretsmanager
+      AWS_ACCESS_KEY_ID: foo
+      AWS_SECRET_ACCESS_KEY: foo
+  postgres:
+    image: postgres:14.8-alpine
+    network_mode: bridge
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_PASSWORD: someLocalPassword
+
